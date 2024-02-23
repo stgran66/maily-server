@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 require('dotenv').config({
-  path: `.env${('.' && process.env.NODE_ENV) || ''}`,
+  path: `.env${process.env.NODE_ENV && '.' + process.env.NODE_ENV}`,
 });
 require('./models/User');
 require('./services/passport');
