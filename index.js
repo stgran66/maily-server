@@ -7,6 +7,7 @@ require('dotenv').config({
   path: `.env${process.env.NODE_ENV && '.' + process.env.NODE_ENV}`,
 });
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(process.env.MONGO_URI);
