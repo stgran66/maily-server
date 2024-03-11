@@ -39,12 +39,13 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className='nav-wrapper'>
+        <div className='nav-wrapper' style={{ backgroundColor: '#FA8072	' }}>
           <Link
             to={this.props.auth ? '/surveys' : '/'}
             className='left brand-logo'
+            style={{ fontFamily: 'whisper', fontSize: '50px' }}
           >
-            Maily
+            <span style={{ color: '#FF2400' }}>M</span>aily
           </Link>
           <ul className='right'>{this.renderContent()}</ul>
         </div>
