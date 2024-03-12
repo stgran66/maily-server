@@ -18,6 +18,18 @@ module.exports = app => {
     res.send(surveys);
   });
 
+  app.delete('/api/surveys/:surveyId', requireLogin, async (req, res) => {
+    try {
+      await Survey.findOneAndDelete({
+        _id: req.params.surveyId,
+        _user: req.user.id,
+      });
+      res.send('Survey deleted successfully');
+    } catch (error) {
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Thanks for voting!');
   });

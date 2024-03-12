@@ -1,18 +1,30 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchSurveys } from '../../actions';
+import { fetchSurveys, deleteSurvey } from '../../actions';
 import PieChart from './PieChart';
 
-const SurveysList = ({ surveys, fetchSurveys }) => {
+const SurveysList = ({ surveys, fetchSurveys, deleteSurvey }) => {
   useEffect(() => {
     fetchSurveys();
   }, [fetchSurveys]);
+
+  const handleDelete = surveyId => {
+    deleteSurvey(surveyId);
+  };
+
+  console.log(surveys);
 
   const renderSurveys = () => {
     return surveys.reverse().map(survey => {
       return (
         <div className='card' key={survey._id}>
           <div className='card-content'>
+            <a
+              className='btn-floating btn-large waves-effect waves-light red right'
+              onClick={() => handleDelete(survey._id)}
+            >
+              <i className='material-icons'>delete</i>
+            </a>
             <span className='card-title' style={{ fontWeight: 'bold' }}>
               {survey.title}
             </span>
@@ -55,4 +67,6 @@ const mapStateToProps = ({ surveys }) => {
   return { surveys };
 };
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveysList);
+export default connect(mapStateToProps, { fetchSurveys, deleteSurvey })(
+  SurveysList
+);
