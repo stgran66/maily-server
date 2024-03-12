@@ -1,5 +1,17 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import SurveyCard from './surveys/SurveyCard';
+
+const dummySurvey = {
+  title: 'My Survey',
+  subject: 'Please give us your feedback',
+  body: 'Do you like our product?',
+  dateSent: '2021-08-01T00:00:00.000Z',
+  yes: 143,
+  no: 28,
+  lastResponded: '2021-08-02T00:00:00.000Z',
+  _id: '1',
+};
 
 function Landing({ user, history }) {
   if (user._id) {
@@ -19,6 +31,7 @@ function Landing({ user, history }) {
           interface that allows you to effortlessly gather and manage feedback
           from your users.
         </p>
+        <SurveyCard survey={dummySurvey} />
         <p>
           With Maily, you can engage your users, understand their needs, and
           make data-driven decisions. Our platform is built to help you uncover
