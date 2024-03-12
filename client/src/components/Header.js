@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+
 import Payments from './Payments';
 
 const Header = ({ auth }) => {
@@ -12,10 +15,28 @@ const Header = ({ auth }) => {
         return (
           <>
             <li>
-              <a href='/auth/google'>Login with google</a>
+              <a
+                href='/auth/google'
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  height: '64px',
+                }}
+              >
+                <FcGoogle size={48} />
+              </a>
             </li>
             <li>
-              <a href='/auth/github'>Login with github</a>
+              <a
+                href='/auth/github'
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  height: '64px',
+                }}
+              >
+                <FaGithub size={48} />
+              </a>
             </li>
           </>
         );
@@ -44,7 +65,15 @@ const Header = ({ auth }) => {
         >
           <span style={{ color: '#FF2400' }}>M</span>aily
         </Link>
-        <ul className='right'>{renderContent()}</ul>
+        <ul
+          className='right'
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          {renderContent()}
+        </ul>
       </div>
     </nav>
   );
