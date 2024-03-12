@@ -1,14 +1,14 @@
-import { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchSurveys } from '../../actions';
 
-class SurveysList extends Component {
-  componentDidMount() {
-    this.props.fetchSurveys();
-  }
+const SurveysList = ({ surveys, fetchSurveys }) => {
+  useEffect(() => {
+    fetchSurveys();
+  }, [fetchSurveys]);
 
-  renderSurveys() {
-    return this.props.surveys.reverse().map(survey => {
+  const renderSurveys = () => {
+    return surveys.reverse().map(survey => {
       return (
         <div className='card darken-1' key={survey._id}>
           <div className='card-content'>
@@ -25,15 +25,13 @@ class SurveysList extends Component {
         </div>
       );
     });
-  }
+  };
 
-  render() {
-    return <div>{this.renderSurveys()}</div>;
-  }
-}
+  return <div>{renderSurveys()}</div>;
+};
 
-function mapStateToProps({ surveys }) {
+const mapStateToProps = ({ surveys }) => {
   return { surveys };
-}
+};
 
 export default connect(mapStateToProps, { fetchSurveys })(SurveysList);
