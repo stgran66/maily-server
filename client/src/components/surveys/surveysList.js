@@ -12,8 +12,6 @@ const SurveysList = ({ surveys, fetchSurveys, deleteSurvey }) => {
     deleteSurvey(surveyId);
   };
 
-  console.log(surveys);
-
   const renderSurveys = () => {
     return surveys.reverse().map(survey => {
       return (
@@ -47,7 +45,7 @@ const SurveysList = ({ surveys, fetchSurveys, deleteSurvey }) => {
                   </p>
                   <p className='card-date'>
                     Last Response:{' '}
-                    {new Date(survey.dateSent).toLocaleDateString()}
+                    {new Date(survey.lastResponded).toLocaleString()}
                   </p>
                 </div>
               </div>
